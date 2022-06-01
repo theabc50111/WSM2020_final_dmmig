@@ -1,3 +1,5 @@
+import pandas as pd
+
 def mrr(evaluation_df, label_df, overview=True):
     """
     ++++++++++++++++++++++++++++++++++++
