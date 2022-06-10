@@ -30,11 +30,13 @@ def sessions2vec(item_path,session_path):
     e_t=time.time()
     df = pd.DataFrame(session_dic).T
     df.columns = _df_item.columns
-    print(df.head())
+    df = df.reset_index()
+    df = df.rename(columns = {"index":"session_id"})
+    #print(df.head())
     print("total session: ",len(session_dic)," time usage: ",e_t-s_t," sec")
     return df
 if __name__ =="__main__":
     session_path = sys.argv[1]
     item_path = (sys.argv[2])
-    sessions2vec(item_path,session_path)
+    sessions2vec(item_path,session_path).to_csv(sys.argv[3])
     
